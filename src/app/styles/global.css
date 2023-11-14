@@ -1,0 +1,7 @@
+/* Import Font Awesome CSS */
+@import '~font-awesome/css/fontawesome.css';
+@import '~font-awesome/css/solid.css';
+@import '~font-awesome/css/regular.css';
+@import '~font-awesome/css/brands.css';
+
+/* Other global CSS styles can go here */
