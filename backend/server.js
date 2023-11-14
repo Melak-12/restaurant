@@ -1,5 +1,5 @@
 const express = require("express");
-
+fs
 const dotenv = require("dotenv");
 const colors = require('colors');
 const connectDb = require('./config/db')
@@ -13,5 +13,5 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/foods', require('./routes/foodRoutes'));
 app.use('/api/menus',require('./routes/menuRoutes'))
-//server 
+//new server  
 app.listen(port, () => console.log(`Server is started on ${port}`.blue))
