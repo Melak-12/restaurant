@@ -7,7 +7,9 @@ import Fotter from '@/components/Fotter'
 import 'tailwindcss/tailwind.css'; 
 import 'font-awesome/css/font-awesome.min.css';
 import dbConnect from '@/lib/dbConnect'
-import dotenv from 'dotenv';
+import { Providers } from './redux/provider'
+import CallTheState from './redux/CallTheState'
+
 console.log("connecting ... ")
 dbConnect();
 const inter = Inter({ subsets: ['latin'] })
@@ -21,12 +23,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Providers>
+          <CallTheState/>
         <Notification />
         <Navbar />
-        {children}
+
+           {children}
+        </Providers>
         <Fotter />
       </body>
     </html >

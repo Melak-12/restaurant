@@ -4,7 +4,7 @@ import React from "react";
 const Fotter = () => {
   return (<footer className="sticky-foooter">
   
-    <div className="h-12 md:h-24 p-4 lg:px-20 xl:px-40 text-slate-500 flex items-center justify-between">
+    <div className="h-12 mt-9 md:h-24 p-4 lg:px-20 xl:px-40 text-slate-500 flex items-center justify-between">
       <Link href="/" className="font-bold text-xl">ANGEL</Link>
        <div className="flex items-center justify-center gap-6 font-bold space-x-4">
         <i className="fa fa-facebook text-blue-500 hover:text-green-600 transition text-2xl"></i>

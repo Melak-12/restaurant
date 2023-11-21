@@ -12,6 +12,12 @@ const optionSchema = new mongoose.Schema({
 });
 
 const productSchema = new mongoose.Schema({
+  user:{
+    type:mongoose.Schema.Types.ObjectId,
+    // required:true,
+    ref:"User"
+  },
+  
   name: {
     type: String,
     required: true,
@@ -22,11 +28,15 @@ const productSchema = new mongoose.Schema({
   },
   img: {
     type: String,
-    required: true,
+    // required: true,
   },
   price: {
     type: Number,
     required: true,
+  },
+  catagory: {
+    type: String,
+    // required: true,
   },
   options: [optionSchema], 
 }, { timestamps: true });
