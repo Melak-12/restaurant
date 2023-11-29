@@ -1,6 +1,5 @@
 {
-  "proxy": "http://localhost:5000"
-,
+  "proxy": "http://localhost:5000",
   "name": "food",
   "version": "0.1.0",
   "private": true,
@@ -25,7 +24,7 @@
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
-    "next": "14.0.1",
+    "next": "^14.0.1",
     "react": "^18",
     "react-countdown": "^2.3.5",
     "react-dom": "^18",
