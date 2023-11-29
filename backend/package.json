@@ -9,6 +9,9 @@
     "server":"node server.js",
     "serve":"nodemon server.js"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "author": "melak",
   "license": "ISC",
   "devDependencies": {
