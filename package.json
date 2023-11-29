@@ -7,9 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "server": " backend/server.js",
-    "serve": "nodemon backend/server.js"
+    "lint": "next lint"
+   
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
