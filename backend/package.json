@@ -10,7 +10,7 @@
     "serve":"nodemon server.js"
   },
   "engines": {
-    "node": "14.x"
+    "node": "20.x"
   },
   "author": "melak",
   "license": "ISC",
