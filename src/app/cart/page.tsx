@@ -17,17 +17,17 @@ const CartPage = () => {
 
   const router=useRouter();
   const dispatch=useDispatch<AppDispatch>();
-  useEffect(()=>{
-    dispatch(fetchProductData())
-    dispatch(fetchMenuData())
-    const storedUserData:string = localStorage.getItem('user')||"";
-    if (storedUserData) {
-      console.log("email in the localhost",storedUserData)
-      dispatch(fetchUserData({email:storedUserData}))
+  useEffect(() => {
+    dispatch(fetchProductData());
+    dispatch(fetchMenuData());
+    if (typeof window !== 'undefined') {
+      const storedUserData:string = localStorage.getItem('user') || "";
+      if (storedUserData) {
+        console.log("email in the localhost", storedUserData);
+        dispatch(fetchUserData({ email: storedUserData }));
+      }
     }
- 
-   
-  },[dispatch])
+  }, [dispatch]);
   
   const cartProducts = products.filter((product) =>
   cartIds.includes(product._id)
@@ -56,10 +56,14 @@ const CartPage = () => {
   const handleModal = () => {
     setIsOpen((prev)=>!prev)
     }
-  const users = localStorage.getItem('user')||"";
-  if ( !user&&users==null) {
-    router.push('/login')
-}
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        const users = localStorage.getItem('user') || '';
+        if (!user && users === null) {
+          router.push('/login');
+        }
+      }
+    }, [user, router]);
   
 
   return (
