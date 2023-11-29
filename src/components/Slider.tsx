@@ -31,7 +31,7 @@ const Slider = () => {
  },[])
 
   return (
-    <div className="flex flex-col   h-[calc(100vh-6rem)] md:h-[calc(80vh-9rem)] lg:flex-row p-7 xl:bg-[url('/bg.jpeg')]">
+    <div className="flex flex-col   h-[calc(100vh-6rem)] md:h-[calc(80vh-9rem)] lg:flex-row p-7 bg-[url('/bg.jpeg')]">
       <div className="h-1/2 flex items-center justify-center flex-col gap-8 font-bold text-slate-600 lg:h-full lg:w-1/2 ">
         <h3 className='text-3xl md:p-10 text-center uppercase p-4 md:text-6xl xl:text-5xl'>{data[currentSlide].title}</h3>
           <Link href='/orders'>

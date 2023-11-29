@@ -8,6 +8,7 @@ export interface Product {
   desc: string;
   img: string;
   price: number;
+  catagory:string;
   options: {
     size: string;
     additionalPrice: number;
@@ -43,6 +44,7 @@ export const fetchProductData = createAsyncThunk<Product[]>("productData/fetch",
       desc: item.desc,
       img: item.img,
       price: item.price,
+      catagory:item.catagory,
       options: item.options,
       createdAt: item.createdAt,
       updatedAt: item.updatedAt,
@@ -65,7 +67,7 @@ export const fetchMenuData = createAsyncThunk<Menu[]>("menuData/fetch", async ()
     const menus: Menu[] = data.map((item: any) => ({
 
       _id: item._id,
-      collectionName: item.name,
+      collectionName: item.collectionName,
       desc: item.desc,
       img: item.img,
       foodsName: item.foodsName,

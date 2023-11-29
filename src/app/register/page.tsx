@@ -49,7 +49,8 @@ const LoginPage = () => {
         const data1=response.data;
         localStorage.setItem("user",JSON.stringify(data1))
         dispatch(register(userData))
-        
+        localStorage.setItem("user",email)
+
         router.push('/')
           console.log("suu")
         } catch (error) {
@@ -60,7 +61,7 @@ const LoginPage = () => {
   return (
     <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(100vh-0rem)] flex items-center justify-center">
       <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row md:h-[80%] md:w-full lg:w-[70%] 2xl:w-1/2">
-        <div className="relative h-1/3 w-full md:h-full md:w-1/2 xl:bg-[url('/bg.jpeg')]">
+        <div className="relative h-1/3 w-full md:h-full md:w-1/2 bg-[url('/bg.jpeg')]">
           {/* <Image src="/bg.jpeg" alt="" fill className="object-cover"/> */}
         </div>
         <div className="px-10 flex flex-col gap-8 md:w-1/2">
@@ -83,26 +84,30 @@ const LoginPage = () => {
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Name
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" id="username" name="name" type="text" placeholder="Username"/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="username" name="name" type="text" placeholder="Username" onChange={onChange}/>
             </div>
             <div className="mb-2">
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Email
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" id="username" name="email" type="text" placeholder="Email"/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" 
+              onChange={onChange} id="username" name="email" type="text" placeholder="Email"/>
             </div>
             <div className="mb-2">
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Password
               </label>
-              <input className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password"name="psd" type="password" placeholder="************"/>
+              <input className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+              onChange={onChange} id="password"name="psd" type="password" placeholder="************"/>
               <p className="text-slate-500 text-xs italic">{}</p>
             </div>
             <div className="mb-2">
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Confirm Password
               </label>
-              <input className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="**************"/>
+              <input className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+              onChange={onChange} id="password" type="password" name="psd2" placeholder="************"/>
               <p className="text-slate-500 text-xs italic">{}</p>
             </div>
             <div className="flex items-center justify-between">

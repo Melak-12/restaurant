@@ -7,7 +7,7 @@ const optionSchema = new mongoose.Schema({
 const menuSchema = new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
+        // required:true,
         ref:"User"
     },
     collectionName: {

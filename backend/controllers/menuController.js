@@ -4,9 +4,18 @@ const asynHandler = require('express-async-handler')
 const Menu = require('../Models/menuModel')
 
 const getMenus = async (req, res) => {
-    const menu= await Menu.find();
-    res.json(menu)
-}
+    const { _id } = req.query;
+
+    if (_id) {
+        const singleProduct = await Menu.findOne({ _id });
+        return res.json({ singleProduct });
+    }
+
+    const menu = await Menu.find();
+    res.json(menu);
+};
+
+
 
 const postMenus = asynHandler(async (req, res) => {
 

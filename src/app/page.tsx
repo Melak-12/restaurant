@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { AppDispatch } from "./redux/store";
 import { fetchMenuData, fetchProductData, fetchUserData } from "./redux/features/ayncThunkApi";
 import { useDispatch } from "react-redux";
+import Test from "@/components/Test";
 
 export default function Home() {
   const dispatch=useDispatch<AppDispatch>();
@@ -27,6 +28,7 @@ export default function Home() {
         <Slider/>
         <Featured/>
         <Offer/>
+        {/* <Test/> */}
        </Providers>
      </main>
   )

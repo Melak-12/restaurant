@@ -43,7 +43,7 @@ export const authSlice = createSlice({
       
       return {
         userValue: {
-          isAdmin: false,
+          isAdmin: email==="melakabebeee@gmail.com"?true:false,
           isAuth: true,
           email:email,
           username: email,
@@ -52,14 +52,14 @@ export const authSlice = createSlice({
         },
       };
     },
-    register: (state, action: PayloadAction<{ email: string; psd: string }>) => {
-      const { email, psd } = action.payload;
+    register: (state, action: PayloadAction<{ name:String, email: string; psd: string }>) => {
+      const { name,email, psd } = action.payload;
       return {
         userValue: {
           isAdmin: false,
           isAuth: true,
           email:email,
-          username: email,
+          username: name,
           cart:[],
           orders:[]
         },
@@ -76,7 +76,7 @@ export const authSlice = createSlice({
         isAuth: true,
         email:userData.email,
         username: userData.name,
-        isAdmin: false,
+        isAdmin: userData.email=="melakabebeee@gmail.com"?true:false,
         cart:userData.cart,
         orders:userData.orders,
       };

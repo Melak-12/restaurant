@@ -5,15 +5,21 @@ import Link from "next/link";
 import React, { useRef } from "react";
 
 const Featured = () => {
-
-  const products :Product[]= useAppSelector((state) => state.products.productValue.products);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (scrollOffset:any) => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += scrollOffset;
+    if (scrollRef && scrollRef.current) {
+      scrollRef.current.scrollLeft += scrollOffset;
     }
   };
+  const products :Product[]= useAppSelector((state) => state.products.productValue.products);
+  // const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // const scroll = (scrollOffset:any) => {
+  //   if (scrollContainerRef.current) {
+  //     scrollContainerRef.current.scrollLeft += scrollOffset;
+  //   }
+  // };
 
   return (
     <div className="w-screen overflow-x-scroll text-slate-500">
@@ -23,7 +29,6 @@ const Featured = () => {
       >
         <i className="fa fa-caret-left" aria-hidden="true"></i>
       </button>
-      <i className="fa fa-caret-right" aria-hidden="true"></i>
 
       <div className="w-max flex">
         {products.map((item) => (
@@ -31,7 +36,7 @@ const Featured = () => {
           {/* <Link></Link> */}
           <div
             key={item._id} 
-            className="w-screen hover:w-[54vh] group h-[60vh] flex flex-col items-center rounded-3xl bg-slate-200 p-6 justify-around m-4 mt-9 hover: hover:bg-slate-700 transition-all duration-300 md:w-[50vw] xl:w-[25vw] xl:h-[65vh]"
+            className=" w-[40vh] hover:w-[54vh] group md:h-[60vh] h-[51vh] flex flex-col items-center rounded-3xl bg-slate-200 p-6 justify-around m-4 mt-9 hover: hover:bg-slate-700 transition-all duration-300 md:w-[50vw] xl:w-[25vw] xl:h-[65vh]"
           >
             {item.img && (
               <div className="relative flex-1 w-full hover:rotate-[60deg]  transition-all duration-500">
@@ -43,7 +48,7 @@ const Featured = () => {
               <p className="p-2 2xl:p-5 group-hover:text-slate-400">{item.desc}</p>
               <span className="text-xl font-bold group-hover:text-yellow-600 text-slate-500">${item.price}</span>
               <Link href={`/product/${item._id}`}>
-                <button className="bg-green-600 text-white p-2 rounded-md group-hover:animate-bounce">
+                <button className="bg-green-600 text-white p-2 rounded-md group-hover:animate-bounce animate-bounce md:animate-none">
                   Add to Cart
                 </button>
               </Link>
@@ -53,8 +58,12 @@ const Featured = () => {
 
         ))}
       </div>
-      <i className="fa fa-caret-left" aria-hidden="true"></i>
-
+      <button
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-transparent border-none z-10"
+        onClick={() => scroll(100)}
+      >
+        <i className="fa fa-caret-right" aria-hidden="true"></i>
+      </button>
     </div>
   );
 };

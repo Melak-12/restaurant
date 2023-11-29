@@ -68,14 +68,21 @@ const login = asyncHandler(async (req, res) => {
 })
 const getMe = asyncHandler(async (req, res) => {
     const { email } = req.query;
-    const user = await User.findOne({ email }); 
     
-    if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+    if (!email) {
+        const users = await User.find();
+        res.status(200).json(users);
+    } else {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(user);
     }
-    
-    res.status(200).json(user);
 });
+
 
 
 
@@ -85,7 +92,55 @@ const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "40d" });
 }
 
+const updateUser = asyncHandler(async (req, res) => {
+    const { email, id } = req.query;
+    const { cart: productToAdd } = req.body;
+
+    let userToUpdate;
+
+    if (id) {
+        userToUpdate = await User.findById(id);
+    } else if (email) {
+        userToUpdate = await User.findOne({ email });
+    }
+
+    if (userToUpdate) {
+        if (productToAdd) {
+            userToUpdate.cart.addToSet(productToAdd); 
+        }
+
+        const update = await userToUpdate.save(); // Save the updated user
+
+        res.status(200).json({ message: 'User updated', updatedUser: update });
+    } else {
+        res.status(404).json({ message: 'User not found' });
+    }
+});
+const removeCart=asyncHandler(async(req,res)=>{
+    const { email, id } = req.query;
+    const { cart: productToBeRemoved } = req.body;
+    let userToUpdate;
+
+    if (id) {
+        userToUpdate = await User.findById(id);
+    } else if (email) {
+        userToUpdate = await User.findOne({ email });
+    }
+
+    if (userToUpdate) {
+        if (productToBeRemoved) {
+            userToUpdate.cart.pull(productToBeRemoved); 
+        }
+``
+        const update = await userToUpdate.save(); 
+
+        res.status(200).json({ message: 'cart updated', updatedCart: update });
+    } else {
+        res.status(404).json({ message: 'User not found' });
+    }
+})
+
 
 module.exports = {
-    registerUser, login, getMe
+    registerUser, login, getMe,updateUser,removeCart
 }

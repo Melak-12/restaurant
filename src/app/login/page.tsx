@@ -42,8 +42,9 @@ const LoginPage = () => {
         dispatch(fetchUserData({ email}))
         localStorage.setItem("user",email)
 
+        email==="melakabebeee@gmail.com"&&router.push('/admin')
+        console.log("suu")
         router.push('/')
-          console.log("suu")
         } catch (error) {
         console.log(error)
       }
@@ -53,7 +54,7 @@ const LoginPage = () => {
     <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(100vh-0rem)] flex items-center justify-center">
    <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row md:h-[80%] md:w-full lg:w-[70%] 2xl:w-1/2">
         {/* IMAGE CONTAINER */}
-        <div className="relative h-1/3 w-full md:h-full md:w-1/2 xl:bg-[url('/bg.jpeg')]">
+        <div className="relative h-1/3 w-full md:h-full md:w-1/2 bg-[url('/bg.jpeg')]">
           {/* <Image src="/bg.jpeg" alt="" fill className="object-cover"/> */}
         </div>
         {/* FORM CONTAINER */}
