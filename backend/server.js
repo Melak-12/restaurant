@@ -16,9 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/foods', require('./routes/foodRoutes'));
 app.use('/api/menus', require('./routes/menuRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
-//new servers
-app.use('/', (req,res)=>{
-    res.status(200).send("welcome angel")
+//server r 
+app.get('/', (req, res) => {
+    res.send("welcome angel")
 });
 
 app.listen(port, () => console.log(`Server is started on ${port}`.blue))
