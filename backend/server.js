@@ -17,4 +17,8 @@ app.use('/api/foods', require('./routes/foodRoutes'));
 app.use('/api/menus', require('./routes/menuRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
 //new server  
+app.use('/', (req,res)=>{
+    res.status(200).send("welcome angel")
+});
+
 app.listen(port, () => console.log(`Server is started on ${port}`.blue))
