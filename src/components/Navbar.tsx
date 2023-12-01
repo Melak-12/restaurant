@@ -42,7 +42,7 @@ const Navbar = () => {
       <Link href="/"className='uppercase text-xl'>Home</Link>
       <Link href="/menu"className='uppercase text-xl'>Menu</Link>
       <Link href="/contact"className='uppercase text-xl'>Contact</Link>
-      <Link href="/Services"className='uppercase text-xl'>Services</Link>
+      <Link href="/Services"className='uppercase text-xl'>Service</Link>
 
      </div>
       <div className='md:hidden'>
