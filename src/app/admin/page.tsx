@@ -40,7 +40,7 @@ const Profile = () => {
 
               const fetchUsers = async () => {
                 try {
-                  const response = await axios.get('http://localhost:5000/api/users/getme');
+                  const response = await axios.get('https://food-backend-9tkt.onrender.com/api/users/getme');
                   const users = response.data;
                   setFetchedUsers(users)  
                   console.log(users);
@@ -70,7 +70,7 @@ const Profile = () => {
   const deleteProduct=async(id:any)=>{
     console.log("the id is ",id)
     try {
-      const response= await axios.delete(`http://localhost:5000/api/foods/${id}`).then(res=>{
+      const response= await axios.delete(`https://food-backend-9tkt.onrender.com/api/foods/${id}`).then(res=>{
         setIsOpen(false)
         console.log("deleted item",res)
         dispatch(fetchUserData({email:user.toString()}))

@@ -36,7 +36,7 @@ export interface Menu {
 export const fetchProductData = createAsyncThunk<Product[]>("productData/fetch", async () => {
   console.log("fetch data ");
   try {
-    const response = await axios.get("http://localhost:5000/api/foods/");
+    const response = await axios.get("https://food-backend-9tkt.onrender.com/api/foods/");
     const data = response.data;
     const products: Product[] = data.map((item: any) => ({
       _id: item._id,
@@ -62,7 +62,7 @@ export const fetchProductData = createAsyncThunk<Product[]>("productData/fetch",
 export const fetchMenuData = createAsyncThunk<Menu[]>("menuData/fetch", async () => {
   console.log("fetch data ");
   try {
-    const response = await axios.get("http://localhost:5000/api/menus/");
+    const response = await axios.get("https://food-backend-9tkt.onrender.com/api/menus/");
     const data = response.data;
     const menus: Menu[] = data.map((item: any) => ({
 
@@ -82,7 +82,7 @@ export const fetchMenuData = createAsyncThunk<Menu[]>("menuData/fetch", async ()
 });
 export const fetchUserData = createAsyncThunk<UserData,{email:string}>("userData/fetch", async ({email}) => {
   try {
-    const response = await axios.get(`http://localhost:5000/api/users/getme?email=${email}`);
+    const response = await axios.get(`https://food-backend-9tkt.onrender.com/api/users/getme?email=${email}`);
     const userData = response.data;
     console.log("fetch data from thunk ",userData);
 

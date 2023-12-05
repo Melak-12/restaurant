@@ -12,7 +12,7 @@ import Loading from "../loading";
 
 const LoginPage = () => {
   const router=useRouter()
-  const API_URL='http://localhost:5000/api/users/login'
+  const API_URL='https://food-backend-9tkt.onrender.com/api/users/login'
   const [errors,setErrors]=useState('')  
   const [loading,setLoading]=useState(false)
 
