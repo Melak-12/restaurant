@@ -8,7 +8,7 @@
     "start": "node server.js",
     "server": "node server.js",
     "serve": "nodemon server.js",
-    "build":"tsc"
+    "build":"npm i"
   },
   "engines": {
     "node": "18.x"
