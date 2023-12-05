@@ -16,13 +16,14 @@ const Profile = () => {
   const users = useAppSelector((state) => state.user.userValue);
   const [tabs, setTabs] = useState(0);
   const [fetchedUsers, setFetchedUsers] = useState<any[]>([])
-
+  const [loadingUsers, setLoadingUsers] = useState(false);
     const dispatch=useDispatch<AppDispatch>();
     const [isOpen, setIsOpen] = useState(false);
     const [pageVisible, setPageVisible] = useState(false);
     const router=useRouter()
     useEffect(() => {
       const fetchData = async () => {
+
         try {
           if (typeof window !== 'undefined') {
             const user = localStorage.getItem('user');
@@ -35,16 +36,21 @@ const Profile = () => {
               setPageVisible(true);
             }
             if (tabs === 3) {
+              setLoadingUsers(true)
+
               const fetchUsers = async () => {
                 try {
                   const response = await axios.get('http://localhost:5000/api/users/getme');
                   const users = response.data;
-                setFetchedUsers(users)   
-               console.log(users);
-                  // You can set the users in state if needed
-                  // setUserList(users);
+                  setFetchedUsers(users)  
+                  console.log(users);
+            
                 } catch (error) {
                   console.error('Error fetching users:', error);
+                  setLoadingUsers(false)
+                }
+                finally{
+                  setLoadingUsers(false)
                 }
               };
           
@@ -53,7 +59,7 @@ const Profile = () => {
           }
         } catch (error) {
           console.error("Error fetching user data:", error);
-          // router.push('/login');
+          setLoadingUsers(false)
         }
       };
     
@@ -179,7 +185,9 @@ const Profile = () => {
           </li>
         </ul>
       </div>
-      <div className="flex flex-col w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-9rem)] text-slate-500 ">
+      <div className="flex overflow-y-scroll flex-col w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-9rem)] text-slate-500 ">
+      {loadingUsers&&<div className="flex p-12 m-7 justify-center text-center">Loading ...</div>}
+      
       {
         tabs==0 && products.map((item)=>(
 
@@ -269,6 +277,7 @@ const Profile = () => {
        
        ))
       }
+        
         {
         tabs==3 &&  fetchedUsers && fetchedUsers.map((item)=>(
 

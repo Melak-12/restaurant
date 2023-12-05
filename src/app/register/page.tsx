@@ -7,12 +7,14 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import axios from "axios";
 import { register } from "../redux/features/authSlice";
+import Loading from "../loading";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [error,setError]=useState('')
+  const [loading,setLoading]=useState(false)
   const router=useRouter()
   const API_URL='http://localhost:5000/api/users/'
-
+  const [errors,setErrors]=useState('')
   const dispatch=useDispatch<AppDispatch>()
     useEffect(()=>{
       // dispatch(fetchproductData())
@@ -38,28 +40,35 @@ const LoginPage = () => {
       }
 
       if(psd!==psd2){
-        setError('passowrd does not mutch  ')
+        setErrors('passowrd does not mutch  ')
+        return;
       }
 
 
       try {
         
+        setLoading(true)
         const userData={name,email,psd}
         const response=await axios.post(API_URL,userData)
         const data1=response.data;
         localStorage.setItem("user",JSON.stringify(data1))
         dispatch(register(userData))
         localStorage.setItem("user",email)
-
         router.push('/')
-          console.log("suu")
-        } catch (error) {
-        console.log(error)
+        console.log("suu")
+        } catch (error:any) {
+        console.log(error||'')
+        setErrors(error.response.data.msg)
+      }
+      finally{
+        setLoading(false)
       }
       
     }
+
   return (
-    <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(100vh-0rem)] flex items-center justify-center">
+    <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(130vh-0rem)] flex items-center justify-center">
+    {loading&&<Loading/>}
       <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row md:h-[80%] md:w-full lg:w-[70%] 2xl:w-1/2">
         <div className="relative h-1/3 w-full md:h-full md:w-1/2 bg-[url('/bg.jpeg')]">
           {/* <Image src="/bg.jpeg" alt="" fill className="object-cover"/> */}
@@ -79,7 +88,7 @@ const LoginPage = () => {
           </button>
          
           <form className=""onSubmit={onSubmit}>
-            <span className="text-red-600">{error}</span>
+          {errors&& <div className="text-red-500 text-xl flex text-center p-2 rounded-lg bg-red-100 justify-center">{errors}</div>}
             <div className="mb-2">
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Name
@@ -98,7 +107,7 @@ const LoginPage = () => {
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Password
               </label>
-              <input className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
               onChange={onChange} id="password"name="psd" type="password" placeholder="************"/>
               <p className="text-slate-500 text-xs italic">{}</p>
             </div>
@@ -106,7 +115,7 @@ const LoginPage = () => {
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Confirm Password
               </label>
-              <input className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
               onChange={onChange} id="password" type="password" name="psd2" placeholder="************"/>
               <p className="text-slate-500 text-xs italic">{}</p>
             </div>
@@ -128,4 +137,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

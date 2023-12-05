@@ -55,6 +55,9 @@ const Navbar = () => {
             register</Link>
             </>:<>
             <Link href='/'className=''> <i className="fa fa-user  text-lg p-2" aria-hidden="true"> </i>{username?username:""}</Link>
+            <Link href='/admin'className=''>{username==="melab"? <i className="fa fa-geers  text-lg p-2" aria-hidden="true">Admin </i>:""}</Link>
+          
+         {username!=="melab"&&<> 
             <Link href="/orders" className="bg-slate-600 text-slate-200   rounded-xl px-2 relative">
             Orders
             <i className="fa fa-motorcycle font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
@@ -62,8 +65,7 @@ const Navbar = () => {
               {orderLength?orderLength:0}
             </span>
           </Link>
-          
-          <Link href="/cart" className="bg-slate-600 text-slate-200   rounded-xl px-2 relative">
+         <Link href="/cart" className="bg-slate-600 text-slate-200   rounded-xl px-2 relative">
             Cart
             <i className="fa fa-shopping-cart font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
             <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
@@ -71,7 +73,8 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <Link href="/" className='pl-1 ring-2 ring-red-600 bg-slate-600 hover:bg-red-500  text-white rounded-md pr-1 shadow-md text-sm text-center' onClick={logOutUser}>
+         </>}
+         <Link href="/" className='pl-1 ring-2 ring-red-600 bg-slate-600 hover:bg-red-500  text-white rounded-md pr-1 shadow-md text-sm text-center' onClick={logOutUser}>
            LogOut
           <i className="fa fa-sign-out font-bold text-lg p-2" aria-hidden="true" > </i>
           </Link>

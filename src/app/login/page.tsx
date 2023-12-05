@@ -8,10 +8,13 @@ import { logIn } from "../redux/features/authSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { fetchUserData } from "../redux/features/ayncThunkApi";
+import Loading from "../loading";
 
 const LoginPage = () => {
   const router=useRouter()
   const API_URL='http://localhost:5000/api/users/login'
+  const [errors,setErrors]=useState('')  
+  const [loading,setLoading]=useState(false)
 
   const dispatch=useDispatch<AppDispatch>()
     useEffect(()=>{
@@ -30,28 +33,42 @@ const LoginPage = () => {
     }))}
 
     const onSubmit=async (e:any)=>{
-      
       e.preventDefault()
       try {
-        
+        setLoading(true)
         const userData={email,psd}
         const response=await axios.post(API_URL,userData)
-        const data1=response.data;
+        console.warn('response', response); // Log the response to see its structure
+    
+        // Check for response status and handle accordingly
+        if (response.status === 408) {
+          console.warn(response.data.msg); // Log the error message
+          return; // Stop execution if there's an error in the fields
+        }
+    
+        // const data1=response.data;
         // localStorage.setItem("user",JSON.stringify(data1))
         // dispatch(logIn(userData))
         dispatch(fetchUserData({ email}))
         localStorage.setItem("user",email)
 
-        email==="melakabebeee@gmail.com"&&router.push('/admin')
-        console.log("suu")
-        router.push('/')
-        } catch (error) {
-        console.log(error)
+       if( email==="melakabebeee@gmail.com"){
+        router.push('/admin')
+       }else router.push('/')
+        
+        } catch (error:any) {
+        setErrors(error.response.data.msg||"Server is not responding !")
       }
+      finally{
+        setLoading(false)
+      }
+      
       
     }
   return (
     <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(100vh-0rem)] flex items-center justify-center">
+    {loading&&<Loading/>}
+
    <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row md:h-[80%] md:w-full lg:w-[70%] 2xl:w-1/2">
         {/* IMAGE CONTAINER */}
         <div className="relative h-1/3 w-full md:h-full md:w-1/2 bg-[url('/bg.jpeg')]">
@@ -63,18 +80,18 @@ const LoginPage = () => {
           <p>Log into your account or create a new one using social buttons</p>
           
           <form onSubmit={onSubmit} className="">
-            
+           {errors&& <div className="text-red-500  flex text-center p-2 rounded-lg bg-red-100 justify-center">{errors}</div>}
             <div className="mb-2">
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Email
               </label>
-              <input value={email} name='email' onChange={onChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
+              <input value={email} name='email' onChange={onChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Email"/>
             </div>
             <div className="mb-2">
               <label className="block text-slate-700 text-sm font-bold mb-2" >
                 Password
               </label>
-              <input value={psd} name='psd' onChange={onChange} type='password'  className="shadow appearance-none border border-slate-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="psd"  placeholder="******************"/>
+              <input value={psd} name='psd' onChange={onChange} type='password'  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="psd"  placeholder="************"/>
               <p className="text-slate-500 text-xs italic">{}</p>
             </div>
             
