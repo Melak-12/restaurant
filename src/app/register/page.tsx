@@ -128,7 +128,7 @@ const RegisterPage = () => {
               </a>
             </div>
           </form>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 mb-2 -mt-1 p-4">
               do you have already accout?<Link className="underline" href="/login"> Login</Link>
           </p>
         </div>
