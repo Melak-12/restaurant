@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import CountDown from "./CountDown";
+import Link from "next/link";
 
 const Offer = () => {
   return (
@@ -13,12 +14,14 @@ const Offer = () => {
         </p>
         <p className="hidden md:block text-white">of empowerment. Quickly pontificate parallel.</p>
         <CountDown/>
+       <Link href='/product/6552626b18b4dff3c8f747f3'>
         <button className="bg-green-500 text-white rounded-md py-3 px-6">Order Now</button>
+       </Link>
       </div>
       {/* <div className="flex-1">
-
       <Image src="/p2.png" alt="" width={110} height={110} className="object-contain" />
       </div> */}
+      <span></span>
       <div className="flex-1 w-full relative md:h-full">
         <Image src="/p2.png" alt="" fill className="object-contain" />
       </div>
