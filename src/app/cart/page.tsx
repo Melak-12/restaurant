@@ -60,7 +60,7 @@ const CartPage = () => {
       if (typeof window !== 'undefined') {
         const users = localStorage.getItem('user') || '';
         if (!user && users === null) {
-          router.push('/login');
+          router.push('/cart');
         }
       }
     }, [user, router]);
@@ -109,11 +109,11 @@ const CartPage = () => {
       </div>
       {isOpen && (
           <div className="fixed top-0 left-0 z-50 w-full h-full bg-opacity-100 flex items-center justify-center backdrop-brightness-75 backdrop-blur-none ">
-            <div className="bg-white rounded-lg p-8">
+            <div className="bg-white rounded-lg p-8 m-6 md:m-0">
               <h3 className="font-bold text-lg mb-4">Payment!</h3>
-              <div className="flex justify-around lg:flex-row sm:flex-col ">
+              <div className="flex justify-around md:flex-row flex-col ">
                 <span className="bg-slate-300 m-3 p-4 rounded-md font-bold text-lg">Telebirr <br /><span className="text-slate-400 text-sm">+251961295261</span></span>
-                <span className="bg-slate-300 m-3 p-4  rounded-md">CBE <br />10003283920</span>
+                <span className="bg-slate-300 m-3 p-4  rounded-md hidden md:block">CBE <br />10003283920</span>
                 <span className="bg-slate-300 m-3 p-4 rounded-md">Abysisnia Bank <br />2376872</span>
               </div>
               <p className="py-4 text-green-600 text-sm">After finishing the payment You can see your items in your product</p>
