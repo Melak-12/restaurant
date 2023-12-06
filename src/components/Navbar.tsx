@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className=" flex-1">
         <Link href="/" className=''>
           <Image src='/logo.png'alt='' width={50} height={50} className='md:hidden'/>
-          <i className='md:justify-start flex justify-center -mt-8 md:m-0 text-center '>AngelFood</i>
+          <i className='md:justify-start flex justify-center -mt-10 md:m-0 text-center '>AngelFood</i>
       
         </Link>
       </div>
@@ -45,8 +45,24 @@ const Navbar = () => {
       <Link href="/Services"className='uppercase text-xl'>Services</Link>
 
      </div>
-      <div className='md:hidden'>
-      </div>
+     {username&&
+     <div className='md:hidden'> 
+            <Link href="/orders" className=" text-slate-200   rounded-xl px-2 relative">
+            
+            <i className="fa fa-motorcycle font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
+            <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
+              {orderLength?orderLength:0}
+            </span>
+          </Link>
+         <Link href="/cart" className=" text-slate-200   md:block  rounded-xl px-2 relative">
+            
+            <i className="fa fa-shopping-cart font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
+            <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
+              {cartLength?cartLength:0}
+            </span>
+          </Link>
+
+         </div>}
       <div className="hidden md:flex gap-4 justify-end">
 
           {!username ?<><Link href="/login" className='border-2 border-green-700 rounded-md pr-1'><i className="fa fa-sign-in p-2" aria-hidden="true"></i>
@@ -58,14 +74,14 @@ const Navbar = () => {
             <Link href='/admin'className=''>{username==="melab"? <i className="fa fa-geers  text-lg p-2" aria-hidden="true">Admin </i>:""}</Link>
           
          {username!=="melab"&&<> 
-            <Link href="/orders" className="bg-slate-600 text-slate-200   rounded-xl px-2 relative">
+            <Link href="/orders" className="bg-slate-600 text-slate-200  rounded-xl px-2 relative">
             Orders
             <i className="fa fa-motorcycle font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
             <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
               {orderLength?orderLength:0}
             </span>
           </Link>
-         <Link href="/cart" className="bg-slate-600 text-slate-200   rounded-xl px-2 relative">
+         <Link href="/cart" className="bg-slate-600 text-slate-200 rounded-xl px-2 relative">
             Cart
             <i className="fa fa-shopping-cart font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
             <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">

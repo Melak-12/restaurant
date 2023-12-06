@@ -61,7 +61,7 @@ const Menu = () => {
             register</Link>
             </>:<>
             <Link href='/'className=''> <i className="fa fa-user  text-lg p-2" aria-hidden="true"> </i>{username?username:""}</Link><br />
-            <Link href="/orders"onClick={()=>setOpen(false)} className="bg-slate-600 text-slate-200 p-2  rounded-xl mx-3 relative">
+            {/* <Link href="/orders"onClick={()=>setOpen(false)} className="bg-slate-600 text-slate-200 p-2  rounded-xl mx-3 relative">
             Orders
             <i className="fa fa-motorcycle font-bold text-lg pl-2 pt-2" aria-hidden="true"></i>
             <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
@@ -75,7 +75,7 @@ const Menu = () => {
             <span className="absolute top-1 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
               {cartLength?cartLength:0}
             </span>
-          </Link><br /> <br />
+          </Link><br /> <br /> */}
 
           <Link href="/"onClick={logOutUser} className='pl-3 ring-2 ring-red-600 bg-slate-600 hover:bg-red-500 p-2  text-white rounded-md pr-2 shadow-md text-sm text-center'>
            LogOut
