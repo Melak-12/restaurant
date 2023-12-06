@@ -10,15 +10,15 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!name || !email || !psd) {
         res.status(400).json ({msg:"please fill all fillds !"})
     }
-    if (psd.length<=11) {
+    if (psd.length<=4) {
         res.status(400).json ({msg:"Passord length should not be less than 12!"})
     }
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
-    if (!passwordRegex.test(psd)) {
-        return res.status(400).json({
-            msg: "Password must contain at least one letter, one number, and one special character (@$!%*#?&)"
-        });
-    }
+    // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
+    // if (!passwordRegex.test(psd)) {
+    //     return res.status(400).json({
+    //         msg: "Password must contain at least one letter, one number, and one special character (@$!%*#?&)"
+    //     });
+    // }
 
     const userExist = await User.findOne({ email });
     if (userExist) {
