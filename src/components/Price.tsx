@@ -33,7 +33,7 @@ const Price = ({ price, id, options }: Props) => {
   const addToCart=async()=>{
     try {
      
-      const resss= await axios.put(`https://food-backend-9tkt.onrender.com/api/users?email=${user}`,{cart:id})
+      const resss= await axios.put(`https://backendresturant.vercel.app/api/users?email=${user}`,{cart:id})
 
       const storedUserData:string = localStorage.getItem('user')||"";
          if(storedUserData){  

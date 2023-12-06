@@ -43,7 +43,7 @@ const CartPage = () => {
   }, [cartProducts]);
   const removeCart=async(id:any)=>{
   try {
-    const res= await axios.put(`https://food-backend-9tkt.onrender.com/api/users/removecart?email=${user}`,{cart:id})
+    const res= await axios.put(`https://backendresturant.vercel.app/api/users/removecart?email=${user}`,{cart:id})
     dispatch(fetchUserData({email:user.toString()}))
     console.warn("removed item from the cart ",res.data)
   } catch (error) {

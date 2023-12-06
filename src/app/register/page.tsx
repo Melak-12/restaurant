@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const [error,setError]=useState('')
   const [loading,setLoading]=useState(false)
   const router=useRouter()
-  const API_URL='https://food-backend-9tkt.onrender.com/api/users/'
+  const API_URL='https://backendresturant.vercel.app/api/users/'
   const [errors,setErrors]=useState('')
   const dispatch=useDispatch<AppDispatch>()
     useEffect(()=>{

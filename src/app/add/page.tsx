@@ -92,7 +92,7 @@ const AddPage = () => {
         
 
       console.warn("data to be send to db ",data2)
-      axios.post('https://food-backend-9tkt.onrender.com/api/foods', data2).then(response => {
+      axios.post('https://backendresturant.vercel.app/api/foods', data2).then(response => {
         router.push(`/product/${response.data.message._id}`);
         console.log('Data sent:', response.data);
         console.log("id",response.data.message._id)

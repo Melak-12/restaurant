@@ -18,7 +18,7 @@ const SingleProductPage = (id:any) => {
   useEffect(() => {
     const fetchData = async (_id: any) => {
       try {
-        const response = await axios.get(`https://food-backend-9tkt.onrender.com/api/foods?_id=${_id}`);
+        const response = await axios.get(`https://backendresturant.vercel.app/api/foods?_id=${_id}`);
         const {singleProduct}=response.data
         setProduct(singleProduct); 
         console.warn('response',response.data)

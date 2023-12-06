@@ -82,7 +82,7 @@ const UpdateProduct = (id:any) => {
             options,
           }
       
-      axios.put(`https://food-backend-9tkt.onrender.com/api/foods/${id}`, data2).then(response => {
+      axios.put(`https://backendresturant.vercel.app/api/foods/${id}`, data2).then(response => {
 
         console.log('Data updation send  sent:', response.data);
         router.push('/')

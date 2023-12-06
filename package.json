@@ -1,5 +1,5 @@
 {
-  "proxy": "https://food-backend-9tkt.onrender.com/",
+  "proxy": "https://backendresturant.vercel.app/",
   "name": "food",
   "version": "0.1.0",
   "private": true,
