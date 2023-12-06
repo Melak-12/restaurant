@@ -13,6 +13,12 @@ const OrdersPage = () => {
             <th>Status</th>
           </tr>
         </thead>
+        <div className="flex justify-center text-red-600 m-8">
+          you dont have any orders yet !
+        </div>
+        <div className="text-slate-500 rounded-lg bg-slate-200 flex justify-center text-center">
+          order History of admins
+        </div>
         <tbody className="bg-slate-200">
           <tr className="text-sm md:text-base bg-slate-50 ">
             <td className="hidden md:block py-6 px-1">1237861238721</td>
