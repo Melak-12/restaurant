@@ -60,7 +60,7 @@ const CartPage = () => {
       if (typeof window !== 'undefined') {
         const users = localStorage.getItem('user') || '';
         if (!user && users === null) {
-          router.push('/cart');
+          router.push('/login');
         }
       }
     }, [user, router]);
