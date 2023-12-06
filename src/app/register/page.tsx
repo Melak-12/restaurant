@@ -67,7 +67,7 @@ const RegisterPage = () => {
     }
 
   return (
-    <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(130vh-0rem)] flex items-center justify-center pb-12 mb-12 md:pb-0 md:mb-0">
+    <div className="p-1 h-[calc(100vh-2rem)] md:h-[calc(130vh-0rem)] flex items-center justify-center pb-12 mb-36 md:pb-0 md:mb-0">
     {loading&&<Loading/>}
       <div className=" h-full shadow-2xl rounded-md flex flex-col md:flex-row md:h-[80%] md:w-full lg:w-[70%] 2xl:w-1/2">
         <div className="relative h-1/3 w-full md:h-full md:w-1/2 bg-[url('/bg.jpeg')]">
