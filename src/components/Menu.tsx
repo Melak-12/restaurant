@@ -55,9 +55,9 @@ const Menu = () => {
         </Link>)}
           <div className=" md:flex gap-3 justify-end">
 
-          {!username ?<><Link href="/login" onClick={()=>setOpen(false)} className='border-2 border-green-700 rounded-md pr-1'><i className="fa fa-sign-in p-2" aria-hidden="true"></i>
+          {!username ?<><Link href="/login" onClick={()=>setOpen(false)} className='border-2 border-green-700 rounded-md pr-2 ml-3 md:ml-0'><i className="fa fa-sign-in p-2" aria-hidden="true"></i>
             login</Link><br /> <br />
-            <Link href="/register"onClick={()=>setOpen(false)} className='border-2 border-green-700 rounded-md pr-1'><i className="fa fa-sign-user p-2" aria-hidden="true"></i>
+            <Link href="/register"onClick={()=>setOpen(false)} className='border-2 ml-3 md:ml-0 border-green-700 rounded-md pr-1'><i className="fa fa-sign-user p-2" aria-hidden="true"></i>
             register</Link>
             </>:<>
             <Link href='/'className=''> <i className="fa fa-user  text-lg p-2" aria-hidden="true"> </i>{username?username:""}</Link><br />
