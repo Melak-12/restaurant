@@ -1,17 +1,20 @@
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const bycrypt = require('bcryptjs')
-const colors=require('colors')
+const colors = require('colors')
 
 const User = require('../Models/userModel')
 
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, psd, cart } = req.body;
     if (!name || !email || !psd) {
-        res.status(400).json ({msg:"please fill all fillds !"})
+        res.status(400).json({ msg: "please fill all fillds !" })
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+        res.status(400).json({ msg: "Not a valid email address!" });
     }
-    if (psd.length<=4) {
-        res.status(400).json ({msg:"Passord length should not be less than 12!"})
+
+    if (psd.length <= 4) {
+        res.status(400).json({ msg: "Passord length should not be less than 12!" })
     }
     // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/;
     // if (!passwordRegex.test(psd)) {
@@ -55,7 +58,7 @@ const login = asyncHandler(async (req, res) => {
         res.status(400).json({ msg: "fill all filds " })
 
     }
-    
+
 
     const checkUser = await User.findOne({ email });
     if (checkUser && (await bycrypt.compare(psd, checkUser.psd))) {
@@ -71,7 +74,7 @@ const login = asyncHandler(async (req, res) => {
         })
     }
     else {
-        res.status(400).json({msg:"Email or Password incorrect !"})
+        res.status(400).json({ msg: "Email or Password incorrect !" })
         throw new Error('Invalid credentials '.yellow)
     }
 
