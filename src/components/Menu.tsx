@@ -56,7 +56,7 @@ const Menu = () => {
           <div className=" md:flex gap-3 justify-end">
 
           {!username ?<><Link href="/login" onClick={()=>setOpen(false)} className='border-2 border-green-700 rounded-md pr-1'><i className="fa fa-sign-in p-2" aria-hidden="true"></i>
-            login</Link>
+            login</Link><br /> <br />
             <Link href="/register"onClick={()=>setOpen(false)} className='border-2 border-green-700 rounded-md pr-1'><i className="fa fa-sign-user p-2" aria-hidden="true"></i>
             register</Link>
             </>:<>
