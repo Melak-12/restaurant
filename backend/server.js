@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 dotenv.config()
 connectDb();
 const app = express();
-app.use(cors({ origin: 'https://restaurants-blond-five.vercel.app/' || 'http://localhost:3001' || 'https://restaurants-blond-five.vercel.app' }));
+app.use(cors({ origin: 'http://localhost:3001' }));
 // this are midlewares to use body and json 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
