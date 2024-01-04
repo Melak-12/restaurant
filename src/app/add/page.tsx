@@ -25,28 +25,29 @@ const AddPage = () => {
   const router = useRouter();
   const dispatch=useDispatch<AppDispatch>();
   const isAdmin = useAppSelector((state) => state.user.userValue.isAdmin);
+  const user = useAppSelector((state) => state.user.userValue.email);
   const [pageVisible, setPageVisible] = useState(false);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (typeof window !== 'undefined') {
-          const user = localStorage.getItem('user');
-          await dispatch(fetchUserData({ email: user || '' }));
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       if (typeof window !== 'undefined') {
+  //         const user = localStorage.getItem('user');
+  //         await dispatch(fetchUserData({ email: user || '' }));
   
-          if (user !== 'melakabebeee@gmail.com') {
-            router.push('/login');
-          } else {
-            setPageVisible(true);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        // router.push('/login');
-      }
-    };
+  //         if (user !== 'melakabebeee@gmail.com') {
+  //           router.push('/login');
+  //         } else {
+  //           setPageVisible(true);
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       // router.push('/login');
+  //     }
+  //   };
   
-    fetchData();
-  }, [router, dispatch,isAdmin]);
+  //   fetchData();
+  // }, [router, dispatch,isAdmin]);
   
 
   const [inputs, setInputs] = useState<Inputs>({
@@ -106,10 +107,15 @@ const AddPage = () => {
       console.log(err);
     }
   };
-  if (!pageVisible) {
-    return null;
-  }
 
+  if (user !== 'melakabebeee@gmail.com') {
+              router.push('/login');
+            } else {
+              setPageVisible(true);
+            }
+            if (!pageVisible) {
+              return null;
+            }
   return (
     <div className="p-8  pt-14 mt-16 pb-11 mb-3  lg:px-20 xl:px-40 h-[calc(100vh-2rem)] md:h-[calc(100vh-2rem)] flex items-center  justify-center text-slate-500">
       {/* {user? */}

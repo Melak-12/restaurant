@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 
 const Profile = () => {
   const user = useAppSelector((state) => state.user.userValue.email);
+  const isAdmin = useAppSelector((state) => state.user.userValue.isAdmin);
+
   const products :Product[]= useAppSelector((state) => state.products.productValue.products);
   const menus :Menu[]= useAppSelector((state) => state.menus.menuValue.menus);
   const users = useAppSelector((state) => state.user.userValue);
@@ -27,11 +29,11 @@ const Profile = () => {
         try {
           if (typeof window !== 'undefined') {
             const user = localStorage.getItem('user');
-            await dispatch(fetchUserData({ email: user || '' }));
-            await  dispatch(fetchProductData())
-            await dispatch(fetchMenuData())
+            // await dispatch(fetchUserData({ email: user || '' }));
+            // await  dispatch(fetchProductData())
+            // await dispatch(fetchMenuData())
             if (user !== 'melakabebeee@gmail.com') {
-              router.push('/login');
+              router.push('/');
             } else {
               setPageVisible(true);
             }
@@ -103,6 +105,15 @@ const Profile = () => {
       console.log(err);
     }
   };
+
+
+  // if (user !== 'melakabebeee@gmail.com') {
+  //   router.push('/login');
+  //   alert("login as admin ")
+  //   } else {
+  //     setPageVisible(true);
+  //   }
+
   if(!pageVisible){
   return null
   }

@@ -34,17 +34,15 @@ const Price = ({ price, id, options }: Props) => {
     try {
      
       const resss= await axios.put(`https://backendresturant.vercel.app/api/users?email=${user}`,{cart:id})
-
-      const storedUserData:string = localStorage.getItem('user')||"";
-         if(storedUserData){  
-         dispatch(fetchUserData({email:storedUserData}))
-         }
+      dispatch(fetchUserData({email:user.toString()}))
       console.warn("suuuu",resss.data)
       
     } catch (error) {
       console.log(error)
     }
   }
+
+  
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-2xl font-bold text-yellow-600 mb-2">${total.toFixed(2)}</h2>

@@ -10,18 +10,7 @@ import { useDispatch } from "react-redux";
 import Test from "@/components/Test";
 
 export default function Home() {
-  const dispatch=useDispatch<AppDispatch>();
-    useEffect(()=>{
-      dispatch(fetchProductData())
-      dispatch(fetchMenuData())
-      const storedUserData:string = localStorage.getItem('user')||"";
-      if (storedUserData) {
-        // const parsedUserData = JSON.parse(storedUserData);
-        console.log("email in the localhost",storedUserData)
-        dispatch(fetchUserData({email:storedUserData}))
-      }
 
-    },[dispatch])
   return (
     <main>
       <Providers>

@@ -2,21 +2,34 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch, RootState, useAppSelector } from './store';
-import { fetchProductData } from './features/ayncThunkApi';
+import { fetchMenuData, fetchProductData, fetchUserData } from './features/ayncThunkApi';
+
+export default function CallTheState({
+  children,
+}: {
+  children: React.ReactNode
+}){
+ const dispatch=useDispatch<AppDispatch>();
+    useEffect(()=>{
+      dispatch(fetchProductData())
+      dispatch(fetchMenuData())
+      const storedUserData:string = localStorage.getItem('user')||"";
+      if (storedUserData) {
+        // const parsedUserData = JSON.parse(storedUserData);
+        console.warn("email in the localhost",storedUserData)
+        dispatch(fetchUserData({email:storedUserData}))
+      }
+
+    },[dispatch])
 
 
-const CallTheState = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const products = useAppSelector((state: RootState) => state.products.productValue.products);
-
-  useEffect(() => {
-    dispatch(fetchProductData());
-  }, [dispatch]);
 
   return (
-    // {children}
-    <div className=""></div>
+    <div className="">
+
+       {children}
+    </div>
   );
 };
 
-export default CallTheState;
+

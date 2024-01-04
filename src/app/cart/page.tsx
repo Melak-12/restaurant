@@ -16,23 +16,8 @@ const CartPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const router=useRouter();
-  const dispatch=useDispatch<AppDispatch>();
-  useEffect(() => {
-    dispatch(fetchProductData());
-    dispatch(fetchMenuData());
-    if (typeof window !== 'undefined') {
-      const storedUserData:string = localStorage.getItem('user') || "";
-      if (storedUserData) {
-        console.log("email in the localhost", storedUserData);
-        dispatch(fetchUserData({ email: storedUserData }));
-      }
-    }
-  }, [dispatch]);
-  
-  const cartProducts = products.filter((product) =>
-  cartIds.includes(product._id)
-  );
-  console.warn("cartProducts are",cartProducts)
+  const dispatch=useDispatch<AppDispatch>();  
+  const cartProducts = products.filter((product) => cartIds.includes(product._id)  );
   useEffect(() => {
     if (cartProducts && cartProducts.length > 0) {
       const total = cartProducts.reduce((acc, curr) => acc + curr.price, 0);
@@ -56,16 +41,18 @@ const CartPage = () => {
   const handleModal = () => {
     setIsOpen((prev)=>!prev)
     }
-    useEffect(() => {
-      if (typeof window !== 'undefined') {
-        const users = localStorage.getItem('user') || '';
-        if (!user && users === null) {
-          router.push('/login');
-        }
-      }
-    }, [user, router]);
+    // useEffect(() => {
+    //   if (typeof window !== 'undefined') {
+    //     const users = localStorage.getItem('user') || '';
+    //     if (!user && users === null) {
+    //       router.push('/login');
+    //     }
+    //   }
+    // }, [user, router]);
   
-
+    // if (!user) {
+    //         router.push('/login');
+    //       }
   return (
     <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col text-slate-500 lg:flex-row w-[48vh] lg:w-full">
       <div className="h-1/2 p-4 bg-slate-50 flex flex-col  justify-center overflow-y-scroll lg:h-full lg:w-full 2xl:w-1/2 lg:px-10 xl:px-14">
@@ -78,8 +65,8 @@ const CartPage = () => {
             <span>Large</span>
           </div>
           <h2 className="font-bold text-yellow-600">${item.price}</h2>
-          <h2 className="font-bold text-slate-600 ">- 1 + </h2>
-          <span className="cursor-pointer text-red-600 text-lg" onClick={()=>removeCart(item._id)}>X</span>
+          {/* <h2 className="font-bold text-slate-600 ">- 1 + </h2> */}
+          <span className="cursor-pointer text-red-600 text-2xl" onClick={()=>removeCart(item._id)}>X</span>
         </div>
         ))}
         

@@ -13,13 +13,6 @@ const Featured = () => {
     }
   };
   const products :Product[]= useAppSelector((state) => state.products.productValue.products);
-  // const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // const scroll = (scrollOffset:any) => {
-  //   if (scrollContainerRef.current) {
-  //     scrollContainerRef.current.scrollLeft += scrollOffset;
-  //   }
-  // };
 
   return (
     <div className="w-screen overflow-x-scroll text-slate-500">
@@ -29,7 +22,6 @@ const Featured = () => {
       >
         <i className="fa fa-caret-left" aria-hidden="true"></i>
       </button>
-
       <div className="w-max flex">
         {products.map((item) => (
           <>

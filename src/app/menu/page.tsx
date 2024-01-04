@@ -7,14 +7,7 @@ import { useDispatch } from "react-redux";
 
 const MenuPage = () => {
   const menus :Menu[]= useAppSelector((state) => state.menus.menuValue.menus);
-  const dispatch=useDispatch<AppDispatch>();
-  useEffect(()=>{
-    dispatch(fetchMenuData())
-    const storedUserData:string = localStorage.getItem('user')||"";
-    if(storedUserData){  
-    dispatch(fetchUserData({email:storedUserData}))
-    }
-  },[dispatch])
+
   return (
     <div className="p-4 lg:px-20 xl:px-40 h-[calc(120vh-1rem)] md:h-[calc(100vh-9rem)] flex flex-col md:flex-row   items-center">
       {menus.map((category) => (
