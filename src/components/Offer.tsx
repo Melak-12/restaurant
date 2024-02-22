@@ -19,7 +19,7 @@ const Offer = () => {
         <CountDown />
         <Link href='/product/6552626b18b4dff3c8f747f3'>
           <button className='bg-green-500 text-white rounded-md py-3 px-6'>
-            Order Now
+            Order Nowww
           </button>
         </Link>
       </div>
