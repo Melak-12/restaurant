@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { use, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, useAppSelector } from "../redux/store";
